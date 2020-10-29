@@ -1,0 +1,21 @@
+# Limit Range - Apply this file only once if it is not applied via TF on a desired namespace
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-min-max-demo-lr
+  namespace: soft-multitenancy-check
+spec:
+  limits:
+  - default:
+      cpu: 200m
+      memory: 256Mi
+    defaultRequest:
+      cpu: 100m
+      memory: 50Mi
+    max:
+      cpu: 800m
+      memory: 200Mi
+    min:
+      cpu: 10m
+      memory: 10Mi
+    type: Container
